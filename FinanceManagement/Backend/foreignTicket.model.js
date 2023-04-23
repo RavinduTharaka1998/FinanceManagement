@@ -2,30 +2,30 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-Customers = new Schema({
-    name: {
+ForeignTickets = new Schema({
+    rnumber: {
         type: String
     },
-    address: {
+    adult: {
         type: String
     },
-    nic: {
+    child: {
         type: String
     },
-    phone: {
+    aprice: {
         type: String
     },
-    customer_type: {
+    cprice: {
         type: String
     },
-    email: {
+    total: {
         type: String
     },
-    password: {
+    date: {
         type: String
     }
 }, {
-    collation: 'customers'
+    collation: 'foreigntickets'
 });
 
-module.exports = mongoose.model('Customers',Customers);
+module.exports = mongoose.model('ForeignTickets',ForeignTickets);

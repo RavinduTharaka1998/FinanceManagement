@@ -11,6 +11,9 @@ export default  class addNativeTicket extends  Component{
     constructor(props) {
         super(props);
 
+        var today = new Date(),
+        cdate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
         this.onChangerNumber = this.onChangerNumber.bind(this);
         this.onChangeAdult = this.onChangeAdult.bind(this);
         this.onChangeChild = this.onChangeChild.bind(this);
@@ -25,7 +28,8 @@ export default  class addNativeTicket extends  Component{
             child: '',
             aprice:'',
             cprice:'',
-            total:''
+            total:'',
+            date: cdate
         }
     }
     onChangerNumber(e){
@@ -65,7 +69,8 @@ export default  class addNativeTicket extends  Component{
             child : this.state.child,
             aprice : this.state.aprice,
             cprice : this.state.cprice,
-            total : this.state.total
+            total : this.state.total,
+            date : this.state.date
         };
        
       

@@ -6,13 +6,14 @@ import financeDashboard from './components/financeDashboard';
 
 import nativeTicket from './components/nativeTicket';
 import addNativeTicket from './components/addNativeTicket';
+import viewNativeTicket from './components/viewNativeTicket';
 
 import foreignTicket from './components/foreignTicket';
 import addForeignTicket from './components/addForeignTicket';
+import viewForeignTicket from './components/viewForeignTicket';
 
 
-import viewMilkMachine from './components/viewMilkMachine';
-import editMilkMachine from './components/editMilkMachine';
+
 
 
 
@@ -29,11 +30,12 @@ class App extends Component{
 
                       <Route path='/nativeTicket' component={nativeTicket}/>
                       <Route path='/addNativeTicket' component={addNativeTicket}/>
+                      <Route path='/viewNativeTicket' component={viewNativeTicket}/>
 
 
                       <Route path='/foreignTicket' component={foreignTicket}/>
                       <Route path='/addForeignTicket' component={addForeignTicket}/>
-
+                      <Route path='/viewForeignTicket' component={viewForeignTicket}/>
                       
                     </Switch>
                 </Router>
