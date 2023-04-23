@@ -5,7 +5,7 @@ import './css/finance.css';
 import heart from "../components/img/heart.png";
 
 
-export default  class addResource extends  Component{
+export default  class adminDashboard extends  Component{
 
 
     constructor(props) {
@@ -15,7 +15,7 @@ export default  class addResource extends  Component{
     render() {
         return(
                 <div>
-                     <div class="sidebar">
+                    <div class="sidebar">
                         <center>
                             <h2>Animal Haven</h2>
                             <h6>Admin Dashboard</h6>
@@ -24,7 +24,7 @@ export default  class addResource extends  Component{
                         <a href="/">Dashboard</a>
                         <a href="/">Visitor Management</a>
                         <a href="/">Project Management</a>
-                        <a href="/">Finance Management</a>
+                        <a href="/financeDashboard">Finance Management</a>
                         <a href="/">Inventory Management</a>
                         <a href="/">Handing Medical Records</a>
                         <a href="/">Animal Management</a>
@@ -39,52 +39,47 @@ export default  class addResource extends  Component{
                             <br/>
                             <h1 style={{fontSize:70,color:'white',marginBottom:30}}>Dashboard</h1>
 
-                            <div className='row' style={{width:'50%'}}>
+                            <div className='row'>
                                 <div className='cl'>
                                     <img src = {heart} width="40"/>
-                                    <a href='/addmilktank'>Add Milk Tank</a>
+                                    <a href='/'>Visitor Management</a>
                                 </div>
                                 <div className='cl'>
                                     <img src = {heart} width="40"/>
-                                    <a href='/addmilktank'>Add Milk Tank</a>
+                                    <a href='/'>Project Management</a>
                                 </div>
                                 <div className='cl'>
                                     <img src = {heart} width="40"/>
-                                    <a href='/addmilktank'>Add Milk Tank</a>
-                                </div>
-                                <div className='cl'>
-                                    <img src = {heart} width="40"/>
-                                    <a href='/addmilktank'>Add Milk Tank</a>
+                                    <a href='/financeDashboard'>Finance Management</a>
                                 </div>
                             </div>
-                            {/* <div className='row' style={{width:'50%',marginTop:100}}>
-                                <div className='col-lg-4'>
+                            <br/><br/>
+                            <div className='row'>
+                                <div className='cl'>
                                     <img src = {heart} width="40"/>
-                                    <a href='/addmilktank'>Add Milk Tank</a>
+                                    <a href='/'>Inventory Management</a>
                                 </div>
-                                <div className='col-lg-4'>
+                                <div className='cl'>
                                     <img src = {heart} width="40"/>
-                                    <a href='/addmilktank'>Add Milk Tank</a>
+                                    <a href='/'>Handing Medical Records</a>
                                 </div>
-                                <div className='col-lg-4'>
+                                <div className='cl'>
                                     <img src = {heart} width="40"/>
-                                    <a href='/addmilktank'>Add Milk Tank</a>
+                                    <a href='/'>Animal Management</a>
                                 </div>
                             </div>
-                            <div className='row' style={{width:'50%',marginTop:100}}>
-                                <div className='col-lg-4'>
+                            <br/><br/>
+                            <div className='row'>
+                                <div className='cl'>
                                     <img src = {heart} width="40"/>
-                                    <a href='/addmilktank'>Add Milk Tank</a>
+                                    <a href='/'>Volunteer Management</a>
                                 </div>
-                                <div className='col-lg-4'>
+                                <div className='cl'>
                                     <img src = {heart} width="40"/>
-                                    <a href='/addmilktank'>Add Milk Tank</a>
+                                    <a href='/'>Employee Management</a>
                                 </div>
-                                <div className='col-lg-4'>
-                                    <img src = {heart} width="40"/>
-                                    <a href='/addmilktank'>Add Milk Tank</a>
-                                </div>
-                            </div> */}
+                            </div>
+                           
                         </center>
                     </div>
                 </div>

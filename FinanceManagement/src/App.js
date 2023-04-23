@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Switch,Route} from 'react-router-dom';
 
-import addResource from './components/addResource';
+import adminDashboard from './components/adminDashboard';
+import financeDashboard from './components/financeDashboard';
 
-import addMilkTank from './components/addMilkTank';
-import viewMilkTank from './components/viewMilkTank';
-import editMilkTank from './components/editMilkTank';
+import nativeTicket from './components/nativeTicket';
+import addNativeTicket from './components/addNativeTicket';
 
-import addMilkMachine from './components/addMilkMachine';
+import foreignTicket from './components/foreignTicket';
+import addForeignTicket from './components/addForeignTicket';
+
+
 import viewMilkMachine from './components/viewMilkMachine';
 import editMilkMachine from './components/editMilkMachine';
 
@@ -21,15 +24,17 @@ class App extends Component{
         <div>
                 <Router>
                     <Switch>
-                      <Route exact path='/' component={addResource}/>
+                      <Route exact path='/' component={adminDashboard}/>
+                      <Route path='/financeDashboard' component={financeDashboard}/>
 
-                      <Route path='/addmilktank' component={addMilkTank}/>
-                      <Route path='/viewmilktank' component={viewMilkTank}/>
-                      <Route path='/editmilktank/:id' component={editMilkTank}/>
+                      <Route path='/nativeTicket' component={nativeTicket}/>
+                      <Route path='/addNativeTicket' component={addNativeTicket}/>
 
-                      <Route path='/addmilkmachine' component={addMilkMachine}/>
-                      <Route path='/viewmilkmachine' component={viewMilkMachine}/>
-                      <Route path='/editmilkmachine/:id' component={editMilkMachine}/>
+
+                      <Route path='/foreignTicket' component={foreignTicket}/>
+                      <Route path='/addForeignTicket' component={addForeignTicket}/>
+
+                      
                     </Switch>
                 </Router>
 
