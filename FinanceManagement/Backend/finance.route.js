@@ -4,6 +4,7 @@ const financeRoutes = express.Router();
 
 let NativeTickets = require('./nativeTicket.model');
 let ForeignTickets = require('./foreignTicket.model');
+let TicketTypes = require('./ticketType.model');
 
 financeRoutes.route('/addnativeticket').post(function (req,res){
     console.log("native ticket add function called...")
@@ -164,6 +165,45 @@ financeRoutes.route('/deleteforeignticket/:id').get(function(req,res){
 });
 
 
+financeRoutes.route('/managetickettype').get(function (req, res){
+    console.log("ticket type get function called...");
+    TicketTypes.find(function (err,type){
+        if(err)
+            console.log(err);
+        else{
+            res.json(type)
+        }
+    });
+
+});
+
+financeRoutes.route('/edittickettype/:id').get(function (req,res){
+    let id = req.params.id;
+    console.log("ticket type edit function called..." +id);
+    TicketTypes.findById(id, function (err,types){
+        res.json(types);
+    });
+});
+
+financeRoutes.route('/updatetickettype/:id').post(function (req,res){
+    let id = req.params.id;
+    TicketTypes.findById(id, function (err, types){
+        if(!types)
+            res.status(404).send("Data is not found??");
+        else{
+            types.tno = req.body.tno;
+            types.type = req.body.type;
+            types.price = req.body.price;
+
+            types.save().then(types => {
+                res.json('Update Complete');
+            })
+                .catch(err =>{
+                    res.status(400).send("Unable to update data");
+                });
+        }
+    });
+});
 
 
 module.exports = financeRoutes;

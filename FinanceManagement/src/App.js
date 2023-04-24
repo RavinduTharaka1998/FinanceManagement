@@ -16,6 +16,9 @@ import viewForeignTicket from './components/viewForeignTicket';
 import editForeignTicket from './components/editForeignTicket';
 import viewOneForeignTicket from './components/viewOneForeignTicket';
 
+import manageTicketType from './components/manageTicketType';
+import editTicketType from './components/editTicketType';
+
 
 
 
@@ -43,6 +46,9 @@ class App extends Component{
                       <Route path='/viewForeignTicket' component={viewForeignTicket}/>
                       <Route path='/editForeignTicket/:id' component={editForeignTicket}/>
                       <Route path='/viewOneForeignTicket/:id' component={viewOneForeignTicket}/>
+
+                      <Route path='/manageTicketType' component={manageTicketType}/>
+                      <Route path='/editTicketType/:id' component={editTicketType}/>
                     </Switch>
                 </Router>
 
