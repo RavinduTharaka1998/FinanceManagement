@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/finance.css';
 
 
-export default  class addForeignTicket extends  Component{
+export default  class editNativeTicket extends  Component{
 
 
     constructor(props) {
@@ -32,6 +32,24 @@ export default  class addForeignTicket extends  Component{
             date: cdate
         }
     }
+
+    componentDidMount() {
+        //alert('edit id ' +this.props.match.params.id);
+        axios.get('http://localhost:4000/finance/editnativeticket/'+this.props.match.params.id)
+            .then(res => {
+                this.setState({
+                    rnumber: res.data.rnumber,
+                    adult: res.data.adult,
+                    child: res.data.child,
+                    aprice: res.data.aprice,
+                    cprice: res.data.cprice
+                });
+            })
+            .catch(function (error){
+                console.log("Can't Get Data");
+            })
+    }
+
     onChangerNumber(e){
         this.setState( {
            rnumber: e.target.value
@@ -74,9 +92,9 @@ export default  class addForeignTicket extends  Component{
         };
        
       
-                            axios.post('http://localhost:4000/finance/addforeignticket',obj)
+                            axios.post('http://localhost:4000/finance/updatenativeticket/'+this.props.match.params.id,obj)
                                 .then(res => {
-                                    alert("Native Ticket Addedd Successfully");
+                                    alert("Native Ticket Updated Successfully");
                                     this.setState({
                                         rnumber: '',
                                         adult:'',
@@ -86,7 +104,7 @@ export default  class addForeignTicket extends  Component{
                                     })
                                     console.log(res.data)});
                             //this.props.history.push('/viewpayment/'+this.props.match.params.id);
-                            window.location.replace('/viewForeignTicket');
+                            window.location.replace('/viewNativeTicket');
 
     }
 
@@ -118,7 +136,7 @@ export default  class addForeignTicket extends  Component{
                                 <h1 style={{fontSize:70,color:'white',marginBottom:30}}>FINANCE DASHBOARD</h1>
                         </center>
 
-                        <h4 style={{color:'white',marginLeft:300}}>FOREIGN TICKET</h4>
+                        <h4 style={{color:'white',marginLeft:300}}>NATIVE TICKET</h4>
                         <br/>
                         <div className="container" style={{marginLeft:300}}>
                         <form onSubmit={this.onSubmit} style={{color:'white',width:'60%'}}>
@@ -167,7 +185,7 @@ export default  class addForeignTicket extends  Component{
                                 </div>
                             </div>
                             <br/><br/>
-                            <button type="submit" class="btn btn-info" style={{marginLeft:210}}>Add</button>
+                            <button type="submit" class="btn btn-info" style={{marginLeft:210}}>Update</button>
                         </form>
                         </div>
                         

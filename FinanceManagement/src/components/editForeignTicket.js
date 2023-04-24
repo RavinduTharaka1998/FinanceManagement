@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/finance.css';
 
 
-export default  class addForeignTicket extends  Component{
+export default  class editForeignTicket extends  Component{
 
 
     constructor(props) {
@@ -32,6 +32,24 @@ export default  class addForeignTicket extends  Component{
             date: cdate
         }
     }
+
+    componentDidMount() {
+        //alert('edit id ' +this.props.match.params.id);
+        axios.get('http://localhost:4000/finance/editforeignticket/'+this.props.match.params.id)
+            .then(res => {
+                this.setState({
+                    rnumber: res.data.rnumber,
+                    adult: res.data.adult,
+                    child: res.data.child,
+                    aprice: res.data.aprice,
+                    cprice: res.data.cprice
+                });
+            })
+            .catch(function (error){
+                console.log("Can't Get Data");
+            })
+    }
+
     onChangerNumber(e){
         this.setState( {
            rnumber: e.target.value
@@ -74,9 +92,9 @@ export default  class addForeignTicket extends  Component{
         };
        
       
-                            axios.post('http://localhost:4000/finance/addforeignticket',obj)
+                            axios.post('http://localhost:4000/finance/updateforeignticket/'+this.props.match.params.id,obj)
                                 .then(res => {
-                                    alert("Native Ticket Addedd Successfully");
+                                    alert("Native Ticket updated Successfully");
                                     this.setState({
                                         rnumber: '',
                                         adult:'',
@@ -167,7 +185,7 @@ export default  class addForeignTicket extends  Component{
                                 </div>
                             </div>
                             <br/><br/>
-                            <button type="submit" class="btn btn-info" style={{marginLeft:210}}>Add</button>
+                            <button type="submit" class="btn btn-info" style={{marginLeft:210}}>Update</button>
                         </form>
                         </div>
                         

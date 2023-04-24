@@ -1,7 +1,9 @@
 import  React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 
 import './css/finance.css';
+import NativeTicketTable from './nativeTickectTableRow';
 
 
 export default  class viewNativeTicket extends  Component{
@@ -9,6 +11,29 @@ export default  class viewNativeTicket extends  Component{
 
     constructor(props) {
         super(props);
+
+        this.state = {natives : []};
+    }
+
+    componentDidMount() {
+        // alert('email is ' +this.props.match.params.id);
+        axios.get('http://localhost:4000/finance/nativeticket/')
+            .then(response => {
+                // alert('Pass una')
+                // alert('Data Tika :'+response.data)
+                this.setState({natives : response.data});
+
+            })
+            .catch(function (error){
+                console.log(error);
+            })
+    }
+
+    tabRow(){
+        return this.state.natives.map(function (object, i){
+            return <NativeTicketTable obj = {object} key = {i}/>;
+        });
+        // return <OrderTableRow obj={this.state.orders}/>
     }
 
     render() {
@@ -52,11 +77,11 @@ export default  class viewNativeTicket extends  Component{
                                     <th>Price (c)</th>
                                     <th>Total</th>
                                     <th>Generating Receipt Date</th>
-                                    <th colSpan="2">Action</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {/* {this.tabRow()} */}
+                                {this.tabRow()}
                             </tbody>
                         </table>
                     </div>

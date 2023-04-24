@@ -18,7 +18,7 @@ financeRoutes.route('/addnativeticket').post(function (req,res){
 });
 
 financeRoutes.route('/addforeignticket').post(function (req,res){
-    console.log("foreign ticket add function called...")
+    console.log("foreign ticket add function called...");
     let foreigntickets = new ForeignTickets(req.body);
     foreigntickets.save()
         .then(foreigntickets => {
@@ -29,105 +29,115 @@ financeRoutes.route('/addforeignticket').post(function (req,res){
         });
 });
 
-// businessRoutes.route('/:id').get(function (req, res){
-//     let email = req.params.id;
-//     console.log(email);
-//     Customers.findOne({$and:[{email : email}]},function (err,cus){
-//         if(err)
-//             console.log(err);
-//         else{
-//             res.json(cus)
-//         }
-//     });
+financeRoutes.route('/nativeticket').get(function (req, res){
+    console.log("native ticket get function called...");
+    NativeTickets.find(function (err,native){
+        if(err)
+            console.log(err);
+        else{
+            res.json(native)
+        }
+    });
 
-// });
+});
 
-// businessRoutes.route('/edit/:id').get(function (req,res){
-//     let id = req.params.id;
-//     Customers.findById(id, function (err,customers){
-//         res.json(customers);
-//     });
-// });
+financeRoutes.route('/foreignticket').get(function (req, res){
+    console.log("foreign ticket get function called...");
+    ForeignTickets.find(function (err,foreign){
+        if(err)
+            console.log(err);
+        else{
+            res.json(foreign)
+        }
+    });
 
-// businessRoutes.route('/update/:id').post(function (req,res){
-//     let id = req.params.id;
-//     Customers.findById(id, function (err, customers){
-//         if(!customers)
-//             res.status(404).send("Data is not found??");
-//         else{
-//             customers.name = req.body.name;
-//             customers.address = req.body.address;
-//             customers.nic = req.body.nic;
-//             customers.phone = req.body.phone;
-//             customers.customer_type = req.body.customer_type;
-//             customers.email = req.body.email;
-//             customers.password = req.body.password;
+});
 
 
-//             customers.save().then(business => {
-//                 res.json('Update Complete');
-//             })
-//                 .catch(err =>{
-//                     res.status(400).send("Unable to update data");
-//                 });
-//         }
-//     });
-// });
+financeRoutes.route('/editnativeticket/:id').get(function (req,res){
+    let id = req.params.id;
+    console.log("native ticket edit function called..." +id);
+    NativeTickets.findById(id, function (err,native){
+        res.json(native);
+    });
+});
 
-// businessRoutes.route('/delete/:id').get(function(req,res){
-//     Customers.findByIdAndRemove({_id:req.params.id}, function (err, customers){
-//         if(err)res.json(err);
+financeRoutes.route('/updatenativeticket/:id').post(function (req,res){
+    let id = req.params.id;
+    NativeTickets.findById(id, function (err, native){
+        if(!native)
+            res.status(404).send("Data is not found??");
+        else{
+            native.rnumber = req.body.rnumber;
+            native.adult = req.body.adult;
+            native.child = req.body.child;
+            native.aprice = req.body.aprice;
+            native.cprice = req.body.cprice;
+            native.total = req.body.total;
+            native.date = req.body.date;
 
-//         else res.json('Successfully Removed');
-//     });
-// });
 
-// businessRoutes.route('/loginbuyer').post(function (req, res){
-//     let email = req.body.email;
-//     let password = req.body.password;
-//     let customer_type = req.body.customer_type;
+            native.save().then(native => {
+                res.json('Update Complete');
+            })
+                .catch(err =>{
+                    res.status(400).send("Unable to update data");
+                });
+        }
+    });
+});
 
-//     let customers = new Customers(req.body);
+financeRoutes.route('/deletenativeticket/:id').get(function(req,res){
+    NativeTickets.findByIdAndRemove({_id:req.params.id}, function (err, native){
+        if(err)res.json(err);
 
-//     Customers.findOne({$and:[{email : email},{password : password},{customer_type : customer_type}]})
-//         .then(customers => {
-//             if(customers){
-//                 customers.name = req.body.name;
-//                 res.status(200).send({
+        else res.json('Successfully Removed');
+    });
+});
 
-//                     message: "Successful Login"
-//                 });
-//             }
-//             else{
-//                 res.status(200).send({
-//                     message: "User Not Found"
-//                 });
-//             }
-//         })
-// });
 
-// businessRoutes.route('/loginseller').post(function (req, res){
-//     let email = req.body.email;
-//     let password = req.body.password;
-//     let customer_type = req.body.customer_type;
+financeRoutes.route('/editforeignticket/:id').get(function (req,res){
+    let id = req.params.id;
+    console.log("foreign ticket edit function called..." +id);
+    ForeignTickets.findById(id, function (err,foreign){
+        res.json(foreign);
+    });
+});
 
-//     let customers = new Customers(req.body);
+financeRoutes.route('/updateforeignticket/:id').post(function (req,res){
+    let id = req.params.id;
+    ForeignTickets.findById(id, function (err, foreign){
+        if(!foreign)
+            res.status(404).send("Data is not found??");
+        else{
+            foreign.rnumber = req.body.rnumber;
+            foreign.adult = req.body.adult;
+            foreign.child = req.body.child;
+            foreign.aprice = req.body.aprice;
+            foreign.cprice = req.body.cprice;
+            foreign.total = req.body.total;
+            foreign.date = req.body.date;
 
-//     Customers.findOne({$and:[{email : email},{password : password},{customer_type : customer_type}]})
-//         .then(customers => {
-//             if(customers){
-//                 customers.name = req.body.name;
-//                 res.status(200).send({
 
-//                     message: "Successful Login"
-//                 });
-//             }
-//             else{
-//                 res.status(200).send({
-//                     message: "User Not Found"
-//                 });
-//             }
-//         })
-// });
+            foreign.save().then(foreign => {
+                res.json('Update Complete');
+            })
+                .catch(err =>{
+                    res.status(400).send("Unable to update data");
+                });
+        }
+    });
+});
+
+financeRoutes.route('/deleteforeignticket/:id').get(function(req,res){
+    ForeignTickets.findByIdAndRemove({_id:req.params.id}, function (err, foreign){
+        if(err)res.json(err);
+
+        else res.json('Successfully Removed');
+    });
+});
+
+
+
 
 module.exports = financeRoutes;

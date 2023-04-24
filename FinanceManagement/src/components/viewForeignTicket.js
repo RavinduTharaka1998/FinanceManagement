@@ -1,7 +1,9 @@
 import  React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 
 import './css/finance.css';
+import ForeignTicketTable from './foreignTicketTableRow';
 
 
 export default  class viewForeignTicket extends  Component{
@@ -9,7 +11,31 @@ export default  class viewForeignTicket extends  Component{
 
     constructor(props) {
         super(props);
+
+        this.state = { foreigns : []};
     }
+
+    componentDidMount() {
+        // alert('email is ' +this.props.match.params.id);
+        axios.get('http://localhost:4000/finance/foreignticket/')
+            .then(response => {
+                // alert('Pass una')
+                // alert('Data Tika :'+response.data)
+                this.setState({foreigns : response.data});
+
+            })
+            .catch(function (error){
+                console.log(error);
+            })
+    }
+
+    tabRow(){
+        return this.state.foreigns.map(function (object, i){
+            return <ForeignTicketTable obj = {object} key = {i}/>;
+        });
+        // return <OrderTableRow obj={this.state.orders}/>
+    }
+
 
     render() {
         return(
@@ -56,7 +82,7 @@ export default  class viewForeignTicket extends  Component{
                                 </tr>
                             </thead>
                             <tbody>
-                                {/* {this.tabRow()} */}
+                                {this.tabRow()}
                             </tbody>
                         </table>
                     </div>
