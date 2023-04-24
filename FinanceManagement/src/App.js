@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch,Route} from 'react-router-dom';
 
 import adminDashboard from './components/adminDashboard';
 import financeDashboard from './components/financeDashboard';
+import reportDashboard from './components/reportDashboard';
 
 import nativeTicket from './components/nativeTicket';
 import addNativeTicket from './components/addNativeTicket';
@@ -19,7 +20,9 @@ import viewOneForeignTicket from './components/viewOneForeignTicket';
 import manageTicketType from './components/manageTicketType';
 import editTicketType from './components/editTicketType';
 
-
+import addRevenue from './components/addRevenue';
+import addExpenses from './components/addExpenses';
+import searchReport from './components/searchReport';
 
 
 
@@ -33,6 +36,7 @@ class App extends Component{
                     <Switch>
                       <Route exact path='/' component={adminDashboard}/>
                       <Route path='/financeDashboard' component={financeDashboard}/>
+                      <Route path='/reportDashboard' component={reportDashboard}/>
 
                       <Route path='/nativeTicket' component={nativeTicket}/>
                       <Route path='/addNativeTicket' component={addNativeTicket}/>
@@ -49,6 +53,10 @@ class App extends Component{
 
                       <Route path='/manageTicketType' component={manageTicketType}/>
                       <Route path='/editTicketType/:id' component={editTicketType}/>
+
+                      <Route path='/addRevenue' component={addRevenue}/>
+                      <Route path='/addExpenses' component={addExpenses}/>
+                      <Route path='/searchReport' component={searchReport}/>
                     </Switch>
                 </Router>
 

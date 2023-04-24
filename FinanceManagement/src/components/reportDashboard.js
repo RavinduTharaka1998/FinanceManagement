@@ -2,10 +2,9 @@ import  React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './css/finance.css';
-import heart from "../components/img/heart.png";
 
 
-export default  class financeDashboard extends  Component{
+export default  class reportDashboard extends  Component{
 
 
     constructor(props) {
@@ -40,28 +39,28 @@ export default  class financeDashboard extends  Component{
                             <h1 style={{fontSize:40,color:'white',marginBottom:30}}>FINANCE DASHBOARD</h1>
 
                             <div>
-                                <img src = "https://www.clubofrome.org/wp-content/uploads/2021/12/COR-Hub-RethinkingFinance_wide-scaled.jpg" width="1100" style={{marginLeft:200}}/>
+                                <img src = "https://english.eagetutor.com/images/Report.jpg" width="800" style={{marginLeft:200}}/>
                             </div>
 
                             <br/><br/>
                             <div className='row'>
                                 <div className='col'>
-                                    <a href='/nativeTicket'>NATIVE TICKET</a>
+                                    <a href='/addRevenue'>TOTAL REVENUE</a>
                                 </div>
                                 <div className='col'>
-                                    <a href='/foreignTicket'>FOREIGN TICKET</a>
+                                    <a href='/addExpenses'>TOTAL EXPENSES</a>
                                 </div>
                                 
                             </div>
                             <br/><br/>
-                            <div className='row'>
-                                <div className='col'>
-                                    <a href='/manageTicketType'>MANAGE TICKET TYPE</a>
+                            <center>
+                                <div className='row'>
+                                    <div className='col'>
+                                        <a href='/searchReport'>SEARCH</a>
+                                    </div>
                                 </div>
-                                <div className='col'>
-                                    <a href='/reportDashboard'>REPORT</a>
-                                </div>
-                            </div>
+                            </center>
+                            
                         </center>
                     </div>
                 </div>

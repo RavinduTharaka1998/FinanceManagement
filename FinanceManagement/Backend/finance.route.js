@@ -5,6 +5,8 @@ const financeRoutes = express.Router();
 let NativeTickets = require('./nativeTicket.model');
 let ForeignTickets = require('./foreignTicket.model');
 let TicketTypes = require('./ticketType.model');
+let Revenues = require('./revenue.model');
+let Expensess = require('./expenses.model');
 
 financeRoutes.route('/addnativeticket').post(function (req,res){
     console.log("native ticket add function called...")
@@ -203,6 +205,56 @@ financeRoutes.route('/updatetickettype/:id').post(function (req,res){
                 });
         }
     });
+});
+
+financeRoutes.route('/addrevenue').post(function (req,res){
+    console.log("revenue  add function called...")
+    let revenues = new Revenues(req.body);
+    revenues.save()
+        .then(revenues => {
+            res.status(200).json({'revenue' : 'revenues is added successfull'});
+        })
+        .catch(err => {
+            res.status(400).send("Unable to save database")
+        });
+});
+
+financeRoutes.route('/addexpenses').post(function (req,res){
+    console.log("expenses  add function called...")
+    let expensess = new Expensess(req.body);
+    expensess.save()
+        .then(expensess => {
+            res.status(200).json({'expenses' : 'expenses is added successfull'});
+        })
+        .catch(err => {
+            res.status(400).send("Unable to save database")
+        });
+});
+
+financeRoutes.route('/revenuereport/:id').get(function (req, res){
+    console.log("revenue report get function called...");
+    let id = req.params.id;
+    Revenues.find({$and:[{id:id}]},function (err,revenues){
+        if(err)
+            console.log(err);
+        else{
+            res.json(revenues)
+        }
+    });
+
+});
+
+financeRoutes.route('/expensesreport/:id').get(function (req, res){
+    console.log("expenses report get function called...");
+    let id = req.params.id;
+    Expensess.find({$and:[{id:id}]},function (err,expenses){
+        if(err)
+            console.log(err);
+        else{
+            res.json(expenses)
+        }
+    });
+
 });
 
 
