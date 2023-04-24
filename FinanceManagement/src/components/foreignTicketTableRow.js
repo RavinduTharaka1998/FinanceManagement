@@ -40,6 +40,8 @@ class TableRow extends Component {
                    {this.props.obj.date}
                </td>
                <td>
+                   <Link to={"/viewOneForeignTicket/"+this.props.obj._id} className="btn btn-info">View</Link>
+                    &nbsp;
                    <Link to={"/editForeignTicket/"+this.props.obj._id} className="btn btn-success">Edit</Link>
                     &nbsp;
                    <button onClick={this.deletesss} className="btn btn-danger">Delete</button>

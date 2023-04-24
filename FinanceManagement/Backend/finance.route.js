@@ -41,6 +41,20 @@ financeRoutes.route('/nativeticket').get(function (req, res){
 
 });
 
+
+financeRoutes.route('/onenativeticket/:id').get(function (req, res){
+    console.log("one native ticket get function called...");
+    let id = req.params.id;
+    NativeTickets.findById(id,function (err,native){
+        if(err)
+            console.log(err);
+        else{
+            res.json(native)
+        }
+    });
+
+});
+
 financeRoutes.route('/foreignticket').get(function (req, res){
     console.log("foreign ticket get function called...");
     ForeignTickets.find(function (err,foreign){
@@ -53,6 +67,18 @@ financeRoutes.route('/foreignticket').get(function (req, res){
 
 });
 
+financeRoutes.route('/oneforeignticket/:id').get(function (req, res){
+    console.log("one foreign ticket get function called...");
+    let id = req.params.id;
+    ForeignTickets.findById(id,function (err,foreign){
+        if(err)
+            console.log(err);
+        else{
+            res.json(foreign)
+        }
+    });
+
+});
 
 financeRoutes.route('/editnativeticket/:id').get(function (req,res){
     let id = req.params.id;
